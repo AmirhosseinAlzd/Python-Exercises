@@ -2,51 +2,56 @@ from os import system
 
 from termcolor import colored
 
-class fraction:
-    def __init__(self , a , b , c , d):
-        self.a = a
-        self.b = b
-        self.c = c
-        self.d = d
-    def sum(self) :
-        num = (self.a*self.d)+(self.c*self.b)
-        den = self.b*self.d
-        return str( str(num) + '/' + str(den) )
-    def sub(self) :
-        num = (self.a*self.d)-(self.c*self.b)
-        den = self.b*self.d
-        return str( str(num) + '/' + str(den) )
-    def mul(self):
-        num = self.a*self.c
-        den = self.b*self.d
-        return str( str(num) + '/' + str(den) )
-    def div(self) :
-        num = self.a*self.d
-        den = self.b*self.c
-        return str( str(num) + '/' + str(den) )
+class Fraction :
+    def __init__(self , s , m) :   # s = sorat  #m = makhraj
+        self.s = s
+        self.m = m
+    def show(self):
+        print(self.s,'/' , self.m)
+    def mul(self ,other):    # self = kasre 1 ( khodesh)   #other = kasre 2
+        soorat = self.s * other.s
+        makhraj = self.m * other.m
+        result = Fraction(soorat , makhraj)
+        return result
+    def div(self ,other):    # self = kasre 1 ( khodesh)   #other = kasre 2
+        soorat = self.s * other.m
+        makhraj = self.m * other.s
+        result = Fraction(soorat , makhraj)
+        return result
+    def sum(self ,other):    # self = kasre 1 ( khodesh)   #other = kasre 2
+        soorat = self.s * other.m + self.m * other.s
+        makhraj = self.m * other.m
+        result = Fraction(soorat , makhraj)
+        return result
+    def sub(self ,other):    # self = kasre 1 ( khodesh)   #other = kasre 2
+        soorat = self.s * other.m - self.m * other.s
+        makhraj = self.m * other.m
+        result = Fraction(soorat , makhraj)
+        return result
 
 print('Fraction 1 :\n')
-a = int(input('\n\tEnter numerator   : '))
-b = int(input('\n\tEnter denominator : '))
+x1 = int(input('\n\tEnter numerator   : '))
+x2 = int(input('\n\tEnter denominator : '))
 print('\n\nFraction 2 :\n')
-c = int(input('\n\tEnter numerator   : '))
-d = int(input('\n\tEnter denominator : '))
-while a == 0 or b == 0 or c == 0  or  d == 0 :
+y1 = int(input('\n\tEnter numerator   : '))
+y2 = int(input('\n\tEnter denominator : '))
+while x1 == 0 or x2 == 0 or y1 == 0  or  y2 == 0 :
     system('clear')
     print(colored('\nPlz dont Enter 0 \n\n' , 'red'))
     print('Fraction 1 :\n')
-    a = int(input('\n\tEnter numerator   : '))
-    b = int(input('\n\tEnter denominator : '))
+    x1 = int(input('\n\tEnter numerator   : '))
+    x2 = int(input('\n\tEnter denominator : '))
     print('\n\nFraction 2 :\n')
-    c = int(input('\n\tEnter numerator   : '))
-    d = int(input('\n\tEnter denominator : '))
+    y1 = int(input('\n\tEnter numerator   : '))
+    y2 = int(input('\n\tEnter denominator : '))
 
-fr = fraction(a,b,c,d)
+a = Fraction(x1,x2)
+b = Fraction(y1,y2)
 
 while True :
     system('clear')
     print('╒══════════════════════════════════════════════╕')
-    print('│         ⟹  ➊ - Add                           │')
+    print('│         ⟹  ➊ - Sum                           │')
     print('│         ⟹  ➋ - Subtract                      │')
     print('│         ⟹  ➌ - Multiplication                │')
     print('│         ⟹  ➍ - Division                      │')
@@ -57,20 +62,25 @@ while True :
     match choose_char :
         case '1' :
             system('clear')
-            print('\n\t Sum ==> ' , fr.a , '/' , fr.b ,'  +  ',fr.c , '/' , fr.d , ' = ' , fr.sum())
+            f = a.sum(b)
+            print('\n\t Sum ==> ' , x1 , '/' , x2 ,'  +  ',y1 , '/' , y2 , ' = ' , end='')
+            f.show()
             p = input()    
         case '2':
             system('clear')
-            print('\n\t Sub ==> ' , fr.a , '/' , fr.b ,'  -  ',fr.c , '/' , fr.d , ' = ' , fr.sub())
-            p = input()
+            g = a.sub(b)
+            print('\n\t Sum ==> ' , x1 , '/' , x2 ,'  -  ',y1 , '/' , y2 , ' = ' , end='')
+            g.show()
         case '3':
             system('clear')
-            print('\n\t Mul ==> ' , fr.a , '/' , fr.b ,'  *  ',fr.c , '/' , fr.d , ' = ' , fr.mul())
-            p = input()
+            c = a.mul(b)
+            print('\n\t Sum ==> ' , x1 , '/' , x2 ,'  *  ',y1 , '/' , y2 , ' = ' , end='')
+            c.show()
         case '4':
             system('clear')
-            print('\n\t Div ==> ' , fr.a , '/' , fr.b ,'  /  ',fr.c , '/' , fr.d , ' = ' , fr.div())
-            p = input()
+            d = a.div(b)
+            print('\n\t Sum ==> ' , x1 , '/' , x2 ,'  /  ',y1 , '/' , y2 , ' = ' , end='')
+            d.show()
         case '5':
             system('clear')
             exit(0)
