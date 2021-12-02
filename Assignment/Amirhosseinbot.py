@@ -5,7 +5,7 @@ from khayyam import JalaliDatetime
 from gtts import gTTS
 import qrcode 
 
-bot = TeleBot('5009688596:AAH1oUIXp1I7LR0s94ql3K8Ja-r_iJUU_pw')
+bot = TeleBot('...')
 
 
 @bot.message_handler(commands=['start'])
@@ -208,4 +208,4 @@ def Qr_Code(message):
 
 
 
-bot.polling(none_stop=True)
+bot.infinity_polling()
