@@ -1,7 +1,8 @@
-from random import randint
-from time import time
 import math
 import arcade
+from random import randint
+from time import time
+
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
