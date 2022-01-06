@@ -79,7 +79,7 @@ class Calculator(QMainWindow):
                 elif sym == 'cot':
                     result = cos(text) / sin(text)
                 elif sym == 'log':
-                    result = log(float(self.ui.Show_screen.text()))
+                    result = log(float(self.ui.Show_screen.text()) , 10)
                 elif sym == 'sqrt':
                     result = sqrt(float(self.ui.Show_screen.text()))
 
