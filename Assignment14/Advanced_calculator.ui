@@ -12,7 +12,6 @@
   </property>
   <property name="font">
    <font>
-    <family>MRT_Vanilla</family>
     <pointsize>22</pointsize>
     <bold>true</bold>
    </font>
@@ -35,7 +34,6 @@
     </property>
     <property name="font">
      <font>
-      <family>MRT_Vanilla</family>
       <pointsize>22</pointsize>
       <bold>true</bold>
      </font>
@@ -285,24 +283,6 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>cot</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="Show_screen">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>0</y>
-      <width>341</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QToolButton" name="zero">
@@ -591,6 +571,20 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>C</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Show_screen">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>341</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 20pt &quot;Segoe UI&quot;;
+color: rgb(255, 255, 255);</string>
     </property>
    </widget>
   </widget>
