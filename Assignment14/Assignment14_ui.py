@@ -1,4 +1,3 @@
-from _typeshed import OpenTextModeReading
 from math import *
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
@@ -11,7 +10,7 @@ class Calculator(QMainWindow):
     def __init__(self):
         super().__init__()
         loader = QUiLoader()
-        self.ui = loader.load("H:\Project\PYTHON\Assignment14\Advanced_calculator.ui")
+        self.ui = loader.load("Advanced_calculator.ui")
         self.ui.show()
         self.ui.point.clicked.connect(partial(self.point))
         self.ui.zero.clicked.connect(partial(self.Number_dontcare, 0))
@@ -24,32 +23,29 @@ class Calculator(QMainWindow):
         self.ui.seven.clicked.connect(partial(self.Number_dontcare, 7))
         self.ui.eight.clicked.connect(partial(self.Number_dontcare, 8))
         self.ui.nine.clicked.connect(partial(self.Number_dontcare, 9))
-        self.ui.Sum.clicked.connect(partial(self.Number_dontcare, '+'))
-        self.ui.Sub.clicked.connect(partial(self.Number_dontcare, '-'))
-        self.ui.Mul.clicked.connect(partial(self.Number_dontcare, '*'))
-        self.ui.Div.clicked.connect(partial(self.Number_dontcare, '/'))
-        self.ui.Equ.clicked.connect(partial(self.Number_dontcare, '='))
-        self.ui.sin.clicked.connect(partial(self.Number_dontcare, 'sin'))
-        self.ui.cos.clicked.connect(partial(self.Number_dontcare, 'cos'))
-        self.ui.tan.clicked.connect(partial(self.Number_dontcare, 'tan'))
-        self.ui.cot.clicked.connect(partial(self.Number_dontcare, 'cot'))
-        self.ui.log.clicked.connect(partial(self.Number_dontcare, 'log'))
-        self.ui.sqrt.clicked.connect(partial(self.Number_dontcare, 'sqrt'))
+        self.ui.Sum.clicked.connect(partial(self.two_operator, '+'))
+        self.ui.Sub.clicked.connect(partial(self.two_operator, '-'))
+        self.ui.Mul.clicked.connect(partial(self.two_operator, 'x'))
+        self.ui.Div.clicked.connect(partial(self.two_operator, '/'))
+        self.ui.Equ.clicked.connect(partial(self.equal))
+        self.ui.sin.clicked.connect(partial(self.one_operator, 'sin'))
+        self.ui.cos.clicked.connect(partial(self.one_operator, 'cos'))
+        self.ui.tan.clicked.connect(partial(self.one_operator, 'tan'))
+        self.ui.cot.clicked.connect(partial(self.one_operator, 'cot'))
+        self.ui.log.clicked.connect(partial(self.one_operator, 'log'))
+        self.ui.sqrt.clicked.connect(partial(self.one_operator, 'sqrt'))
+        self.ui.c_btn.clicked.connect(self.reset_screen)
 
     def Number_dontcare(self, d):
         self.ui.Show_screen.setText(self.ui.Show_screen.text() + str(d))
 
-    def Num1(self, opr):
-        try:
+    def two_operator(self, opr):
             if self.ui.Show_screen.text() != '':
                 self.num1 = float(self.ui.Show_screen.text())
                 self.ui.Show_screen.setText('')
                 self.operator = opr
-        except:
-            self.ui.Show_screen.setText('Error')
 
     def equal(self):
-        try:
             if self.ui.Show_screen.text() != '':
                 self.num2 = float(self.ui.Show_screen.text())
 
@@ -57,27 +53,23 @@ class Calculator(QMainWindow):
                     result = self.num1 + self.num2
                 elif self.operator == '-':
                     result = self.num1 - self.num2
-                elif self.operator == '*':
+                elif self.operator == 'x':
                     result = self.num1 * self.num2
                 elif self.operator == '/':
                     result = self.num1 / self.num2
 
                 self.ui.Show_screen.setText(str(result))
-        except:
-            self.ui.Show_screen.setText('Error')
 
-    def reset(self):
+    def reset_screen(self):
         self.ui.Show_screen.setText('')
 
     def point(self):
         if '.' not in self.ui.Show_screen.text() and self.ui.Show_screen.text() != '':
             self.ui.Show_screen.setText(self.ui.Show_screen.text() + '.')
 
-    def function_x(self, sym):
-        try:
+    def one_operator(self, sym):
             if self.ui.Show_screen.text() != '':
                 text = radians(float(self.ui.Show_screen.text()))
-
                 if sym == 'sin':
                     result = sin(text)
                 elif sym == 'cos':
@@ -93,8 +85,6 @@ class Calculator(QMainWindow):
 
                 result = round(result, 6)
                 self.ui.Show_screen.setText(str(result))
-        except:
-            self.ui.Show_screen.setText('Error')
 
 my_app = QApplication()
 Main_window_calculator = Calculator()                # JUST ONE MAIN WINDOW
